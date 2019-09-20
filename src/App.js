@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
+import "./styles/App.css";
 const API = "https://dog.ceo/api/breeds/list/all";
 class App extends Component {
   constructor(props) {
@@ -17,11 +18,7 @@ class App extends Component {
       .then(data => data.message)
       .then(breedObject => this.getNamesFromObject(breedObject))
       .then(breeds => this.getLinksFromArray(breeds))
-      .then(apiArray => this.fetchImages(apiArray))
-      .then(thing => {
-        this.setState({ breedImgaes: thing });
-      });
-    this.setState({ isFetching: false });
+      .then(apiArray => this.fetchImages(apiArray));
   }
   getNamesFromObject = object => {
     let breeds = [];
@@ -59,35 +56,46 @@ class App extends Component {
     return breedAPIArray;
   };
   fetchImages = array => {
-    let someArray = [];
-    array.forEach(api => {
-      return fetch(api)
-        .then(response => response.json())
-        .then(data => data.message)
-        .then(listImgSrc => someArray.push(listImgSrc));
+    Promise.all(
+      array.map(url =>
+        fetch(url)
+          .then(response => response.json())
+          .then(data => data.message)
+      )
+    ).then(imgs => {
+      this.setState({ breedImgaes: imgs, isFetching: true });
     });
-    return someArray;
   };
-  generateListItem = url => {
-    console.log(url);
+  generateListItem = (url, index) => {
+    const style = {
+      backgroundColor: "#cecece",
+      backgroundImage: `url(${url})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center"
+    };
     let listItem = (
-      <li>
-        <img src={url} alt="missing pup" />
+      <li key={index}>
+        <div className="imageCard" alt="missing pup" style={style} />
       </li>
     );
     return listItem;
   };
-
+  loopThroughImages = () => {
+    let listItems = this.state.breedImgaes.map((img, index) => {
+      return this.generateListItem(img, index);
+    });
+    return listItems;
+  };
   render() {
-    console.log(this.state.breedImgaes);
     return (
-      <div>
+      <div className="container">
         <Header />
-        <ul>
-          {this.state.breedImgaes.forEach(img => {
-            this.generateListItem(img);
-          })}
-        </ul>
+        <div className="largeArea">
+          <div className="sideMenu col-md-3 col-xs-12" />
+          <div className="imageListCard col-md-8 col-xs-12">
+            <ul className="imageList">{this.loopThroughImages()}</ul>
+          </div>
+        </div>
       </div>
     );
   }

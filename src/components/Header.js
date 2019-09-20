@@ -6,12 +6,12 @@ function Header(props) {
   return (
     <header
       className="d-flex justify-content-between align-items-center pt-3"
-      style={{ maxWidth: "1120px", margin: "auto", padding: "0 20px" }}
+      style={{ maxWidth: "1120px", margin: "auto" }}
     >
       <img
         src={logo}
         alt="PuppersPlz Logo"
-        style={{ width: "150px", height: "100%" }}
+        style={{ width: "200px", height: "100%" }}
       />
       <div>
         <button
