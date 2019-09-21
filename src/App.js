@@ -84,15 +84,55 @@ class App extends Component {
     let listItems = this.state.breedImgaes.map((img, index) => {
       return this.generateListItem(img, index);
     });
-    return listItems;
+    let num = Math.random() * listItems.length - 9;
+    return listItems.slice(num, num + 9);
   };
   render() {
+    const alphabet = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z"
+    ];
     return (
       <div className="container">
         <Header />
         <div className="largeArea">
-          <div className="sideMenu col-md-3 col-xs-12" />
-          <div className="imageListCard col-md-8 col-xs-12">
+          <div className="sideMenu col-md-3 col-xs-12">
+            <h1>Breeds</h1>
+            <h4>
+              Select the first letter <br />
+              of the breed you wish to view
+            </h4>
+            <select value={this.value} onChange={() => {}}>
+              {alphabet.map(letter => {
+                return <option value="letter">{letter}</option>;
+              })}
+            </select>
+          </div>
+          <div className="imageListCard col-md-9 col-xs-12">
             <ul className="imageList">{this.loopThroughImages()}</ul>
           </div>
         </div>

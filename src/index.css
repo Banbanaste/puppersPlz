@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#background {
+  position: absolute;
+  width: 50%;
+  top: 150px;
+  right: 0;
+  background-color: #fff;
+  height: 700px;
+  z-index: -1;
+}
