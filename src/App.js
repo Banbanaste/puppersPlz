@@ -119,7 +119,7 @@ class App extends Component {
     return (
       <div className="a">
         <Header />
-        <div className="largeArea">
+        <div className="largeArea container">
           <div className="sideMenu">
             <h1>Breeds</h1>
             <h4>Select the first letter of the breed you wish to view</h4>
@@ -132,7 +132,7 @@ class App extends Component {
         </div>
         <div className="largeArea">
           <div className="imageListCard col-md-12 col-xs-12 col-lg-12">
-            <ul className="imageList">{this.loopThroughImages()}</ul>
+            <ul className="imageList container">{this.loopThroughImages()}</ul>
           </div>
         </div>
       </div>

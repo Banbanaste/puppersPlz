@@ -22,15 +22,15 @@
 }
 
 .sideMenu {
-  text-align: center;
 }
 
 .sideMenu h4 {
   display: inline-block;
+  margin-right: 20px;
 }
 
 .sideMenu select {
-  margin-left: 20px;
+  width: 100px;
 }
 
 .imageListCard {
@@ -53,8 +53,7 @@
   width: 100%;
   height: 100%;
   padding: 0px;
-  padding: 30px 0 0 30px;
-  justify-content: center;
+  padding: 30px 0 0 0;
 }
 
 .imageList li {
