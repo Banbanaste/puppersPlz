@@ -20,20 +20,30 @@
 .largeArea {
   margin-top: 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
 }
 
 .sideMenu {
+  padding: 0 250px 0 0;
 }
 
 .imageListCard {
   background-color: #fff;
   border-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   overflow: hidden;
   height: 700px;
   display: flex;
 }
+
+/* .largeArea::after {
+  content: "";
+  height: 700px;
+  width: 100px;
+  background-color: #000;
+} */
 
 .imageList {
   list-style: none;

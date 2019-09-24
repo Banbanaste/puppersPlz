@@ -117,10 +117,10 @@ class App extends Component {
       "z"
     ];
     return (
-      <div className="container">
+      <div className="a">
         <Header />
         <div className="largeArea">
-          <div className="sideMenu col-md-3 col-xs-12">
+          <div className="sideMenu ">
             <h1>Breeds</h1>
             <h4>
               Select the first letter <br />
@@ -132,7 +132,7 @@ class App extends Component {
               })}
             </select>
           </div>
-          <div className="imageListCard col-md-9 col-xs-12">
+          <div className="imageListCard col-md-9 col-xs-12 col-lg-6">
             <ul className="imageList">{this.loopThroughImages()}</ul>
           </div>
         </div>

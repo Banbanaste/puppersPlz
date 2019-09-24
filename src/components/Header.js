@@ -5,7 +5,7 @@ import "../styles/Header.css";
 function Header(props) {
   return (
     <header
-      className="d-flex justify-content-between align-items-center"
+      className="d-flex justify-content-between align-items-center container"
       style={{ margin: "auto", height: "100px" }}
     >
       <img src={logo} alt="PuppersPlz Logo" style={{ width: "200px" }} />
