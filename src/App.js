@@ -120,19 +120,18 @@ class App extends Component {
       <div className="a">
         <Header />
         <div className="largeArea">
-          <div className="sideMenu ">
+          <div className="sideMenu">
             <h1>Breeds</h1>
-            <h4>
-              Select the first letter <br />
-              of the breed you wish to view
-            </h4>
+            <h4>Select the first letter of the breed you wish to view</h4>
             <select value={this.value} onChange={() => {}}>
               {alphabet.map(letter => {
                 return <option value="letter">{letter}</option>;
               })}
             </select>
           </div>
-          <div className="imageListCard col-md-9 col-xs-12 col-lg-6">
+        </div>
+        <div className="largeArea">
+          <div className="imageListCard col-md-12 col-xs-12 col-lg-12">
             <ul className="imageList">{this.loopThroughImages()}</ul>
           </div>
         </div>

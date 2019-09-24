@@ -19,22 +19,23 @@
 
 .largeArea {
   margin-top: 50px;
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
 }
 
 .sideMenu {
-  padding: 0 250px 0 0;
+  text-align: center;
+}
+
+.sideMenu h4 {
+  display: inline-block;
+}
+
+.sideMenu select {
+  margin-left: 20px;
 }
 
 .imageListCard {
   background-color: #fff;
-  border-radius: 20px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  overflow: hidden;
-  height: 700px;
+  min-height: 652px;
   display: flex;
 }
 
@@ -49,11 +50,11 @@
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  overflow: auto;
   width: 100%;
   height: 100%;
   padding: 0px;
   padding: 30px 0 0 30px;
+  justify-content: center;
 }
 
 .imageList li {
