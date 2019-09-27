@@ -19,7 +19,7 @@ function Header(props) {
         </button>
         <button
           type="button"
-          className="btn btn-md rounded-pill"
+          className="btn btn-md rounded-pill searchBtn"
           onClick={props.onClick}
           style={{
             backgroundColor: "#C52B2B",

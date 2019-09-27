@@ -34,7 +34,7 @@
 }
 
 .imageListCard {
-  background-color: #fff;
+  background-color: rgb(247, 247, 247);
   min-height: 652px;
   display: flex;
 }
@@ -65,10 +65,25 @@
   height: 150px;
   border-radius: 10px;
   margin: 20px;
-  transition: 0.4s ease-in-out;
+  transition: 0.3s;
+  line-height: 150px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.imageCard span {
+  transition: 0.3s;
+  color: rgba(255, 255, 255, 0);
+  padding: 2px 5px;
+  border-radius: 5px;
 }
 
 .imageCard:hover {
   cursor: pointer;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.imageCard:hover span {
+  color: #fff;
+  background-color: #000;
 }

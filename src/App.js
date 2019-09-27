@@ -7,7 +7,8 @@ class App extends Component {
     super(props);
     this.state = {
       breeds: [],
-      breedImgaes: [],
+      breedImages: [],
+      breedsSubset: [],
       isFetching: false
     };
   }
@@ -32,6 +33,7 @@ class App extends Component {
         breeds.push(breedName);
       }
     }
+    this.setState({ breeds });
     return breeds;
   };
   makeBreedLink = breed => {
@@ -63,7 +65,7 @@ class App extends Component {
           .then(data => data.message)
       )
     ).then(imgs => {
-      this.setState({ breedImgaes: imgs, isFetching: true });
+      this.setState({ breedImages: imgs, isFetching: true });
     });
   };
   generateListItem = (url, index) => {
@@ -75,17 +77,52 @@ class App extends Component {
     };
     let listItem = (
       <li key={index}>
-        <div className="imageCard" alt="missing pup" style={style} />
+        <div
+          key={index}
+          id={index}
+          className="imageCard"
+          alt={this.state.breeds[index]}
+          onMouseOver={this.handleHover}
+          style={style}
+          onClick={this.handleClick}
+        >
+          <span id={index}>{this.state.breeds[index]}</span>
+        </div>
       </li>
     );
     return listItem;
   };
   loopThroughImages = () => {
-    let listItems = this.state.breedImgaes.map((img, index) => {
+    let listItems = this.state.breedImages.map((img, index) => {
       return this.generateListItem(img, index);
     });
+    return listItems;
     let num = Math.random() * listItems.length - 9;
     return listItems.slice(num, num + 9);
+  };
+  handleHover = event => {
+    const select = event.target.id;
+  };
+  handleClick = event => {
+    const select = event.target.id;
+    const API = this.makeBreedLink(this.state.breeds[select]) + "/10";
+    this.fetchSingleBreed(API);
+  };
+  fetchSingleBreed = url => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => data.message)
+      .then(breedImages => this.setState({ breedImages }));
+  };
+  handleSelectChange = event => {
+    const letter = event.target.value;
+    const filteredBreeds = this.state.breeds.filter(
+      breed => breed.indexOf(letter) === 0
+    );
+    console.log(filteredBreeds);
+    const filteredUrls = this.getLinksFromArray(filteredBreeds);
+    const filteredImages = this.fetchImages(filteredUrls);
+    console.log(filteredImages);
   };
   render() {
     const alphabet = [
@@ -123,9 +160,9 @@ class App extends Component {
           <div className="sideMenu">
             <h1>Breeds</h1>
             <h4>Select the first letter of the breed you wish to view</h4>
-            <select value={this.value} onChange={() => {}}>
+            <select value={this.value} onChange={this.handleSelectChange}>
               {alphabet.map(letter => {
-                return <option value="letter">{letter}</option>;
+                return <option value={letter}>{letter}</option>;
               })}
             </select>
           </div>
